@@ -1,0 +1,3 @@
+boto3==1.22.9
+sagemaker==2.88.3
+streamlit==1.8.1
