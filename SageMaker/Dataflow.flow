@@ -1,0 +1,539 @@
+{
+  "metadata": {
+    "version": 1,
+    "disable_limits": false,
+    "instance_type": "ml.m5.4xlarge"
+  },
+  "nodes": [
+    {
+      "node_id": "9b7037d6-a67d-408c-bfc7-aa252682df97",
+      "type": "SOURCE",
+      "operator": "sagemaker.s3_source_0.1",
+      "parameters": {
+        "dataset_definition": {
+          "__typename": "S3CreateDatasetDefinitionOutput",
+          "datasetSourceType": "S3",
+          "name": "vihsd_train.csv",
+          "description": null,
+          "s3ExecutionContext": {
+            "__typename": "S3ExecutionContext",
+            "s3Uri": "s3://hate-speech-vi/vihsd_train.csv",
+            "s3ContentType": "csv",
+            "s3HasHeader": true,
+            "s3FieldDelimiter": ",",
+            "s3DirIncludesNested": false,
+            "s3AddsFilenameColumn": false
+          }
+        }
+      },
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "default",
+          "sampling": {
+            "sampling_method": "sample_by_limit",
+            "limit_rows": 50000
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "7889224c-47f7-4508-bd00-554f88f0d53e",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.infer_and_cast_type_0.1",
+      "parameters": {},
+      "trained_parameters": {
+        "schema": {
+          "free_text": "string",
+          "label_id": "long"
+        }
+      },
+      "inputs": [
+        {
+          "name": "default",
+          "node_id": "9b7037d6-a67d-408c-bfc7-aa252682df97",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "0a27cf15-e817-43d5-b883-b0e055c6c8cb",
+      "type": "SOURCE",
+      "operator": "sagemaker.s3_source_0.1",
+      "parameters": {
+        "dataset_definition": {
+          "__typename": "S3CreateDatasetDefinitionOutput",
+          "datasetSourceType": "S3",
+          "name": "vlsp2019_train.csv",
+          "description": null,
+          "s3ExecutionContext": {
+            "__typename": "S3ExecutionContext",
+            "s3Uri": "s3://hate-speech-vi/vlsp2019_train.csv",
+            "s3ContentType": "csv",
+            "s3HasHeader": true,
+            "s3FieldDelimiter": ",",
+            "s3DirIncludesNested": false,
+            "s3AddsFilenameColumn": false
+          }
+        }
+      },
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "default",
+          "sampling": {
+            "sampling_method": "sample_by_limit",
+            "limit_rows": 50000
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "1a11228a-cd3b-47c6-a0a3-b4bba131085e",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.infer_and_cast_type_0.1",
+      "parameters": {},
+      "trained_parameters": {
+        "schema": {
+          "_c0": "long",
+          "id": "string",
+          "free_text": "string",
+          "label_id": "long",
+          "CLEAN": "float",
+          "OFFENSIVE": "float",
+          "HATE": "float"
+        }
+      },
+      "inputs": [
+        {
+          "name": "default",
+          "node_id": "0a27cf15-e817-43d5-b883-b0e055c6c8cb",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "a45e667a-cff6-415d-93e1-e1ec8c0e0071",
+      "type": "SOURCE",
+      "operator": "sagemaker.s3_source_0.1",
+      "parameters": {
+        "dataset_definition": {
+          "__typename": "S3CreateDatasetDefinitionOutput",
+          "datasetSourceType": "S3",
+          "name": "vihsd_train.csv",
+          "description": null,
+          "s3ExecutionContext": {
+            "__typename": "S3ExecutionContext",
+            "s3Uri": "s3://hate-speech-vi/vihsd_train.csv",
+            "s3ContentType": "csv",
+            "s3HasHeader": true,
+            "s3FieldDelimiter": ",",
+            "s3DirIncludesNested": false,
+            "s3AddsFilenameColumn": false
+          }
+        }
+      },
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "default",
+          "sampling": {
+            "sampling_method": "sample_by_limit",
+            "limit_rows": 50000
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "462c2c94-43f4-4a1d-9d34-47d489b17f89",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.infer_and_cast_type_0.1",
+      "parameters": {},
+      "trained_parameters": {
+        "schema": {
+          "free_text": "string",
+          "label_id": "long"
+        }
+      },
+      "inputs": [
+        {
+          "name": "default",
+          "node_id": "a45e667a-cff6-415d-93e1-e1ec8c0e0071",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "5ab04573-652d-44a4-8876-37ab07e0066b",
+      "type": "SOURCE",
+      "operator": "sagemaker.s3_source_0.1",
+      "parameters": {
+        "dataset_definition": {
+          "__typename": "S3CreateDatasetDefinitionOutput",
+          "datasetSourceType": "S3",
+          "name": "vlsp2019_test.csv",
+          "description": null,
+          "s3ExecutionContext": {
+            "__typename": "S3ExecutionContext",
+            "s3Uri": "s3://hate-speech-vi/vlsp2019_test.csv",
+            "s3ContentType": "csv",
+            "s3HasHeader": true,
+            "s3FieldDelimiter": ",",
+            "s3DirIncludesNested": false,
+            "s3AddsFilenameColumn": false
+          }
+        }
+      },
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "default",
+          "sampling": {
+            "sampling_method": "sample_by_limit",
+            "limit_rows": 50000
+          }
+        }
+      ]
+    },
+    {
+      "node_id": "85cfd5e3-f158-4da9-9b2d-046eda100a27",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.infer_and_cast_type_0.1",
+      "parameters": {},
+      "trained_parameters": {
+        "schema": {
+          "id": "string",
+          "free_text": "string",
+          "CLEAN": "string",
+          "OFFENSIVE": "string",
+          "HATE": "string",
+          "label_id": "string"
+        }
+      },
+      "inputs": [
+        {
+          "name": "default",
+          "node_id": "5ab04573-652d-44a4-8876-37ab07e0066b",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "441e72ce-3e4a-4aec-960c-8d8cf3f20c78",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.manage_columns_0.1",
+      "parameters": {
+        "operator": "Rename column",
+        "rename_column_parameters": {
+          "input_column": "free_text",
+          "new_name": "text"
+        },
+        "drop_column_parameters": {}
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "7889224c-47f7-4508-bd00-554f88f0d53e",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "8628a7fa-4dd9-45e7-a00b-48d05ed2215c",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.manage_columns_0.1",
+      "parameters": {
+        "operator": "Rename column",
+        "rename_column_parameters": {
+          "input_column": "label_id",
+          "new_name": "label"
+        },
+        "drop_column_parameters": {}
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "441e72ce-3e4a-4aec-960c-8d8cf3f20c78",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "ac044163-27d4-46c1-b368-18c52f8607bd",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.manage_columns_0.1",
+      "parameters": {
+        "operator": "Drop column",
+        "drop_column_parameters": {
+          "column_to_drop": [
+            "_c0",
+            "id",
+            "CLEAN",
+            "OFFENSIVE",
+            "HATE"
+          ]
+        }
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "1a11228a-cd3b-47c6-a0a3-b4bba131085e",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "70a985ef-106e-41a2-81ba-4e0ca9c8dda2",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.manage_columns_0.1",
+      "parameters": {
+        "operator": "Rename column",
+        "rename_column_parameters": {
+          "input_column": "free_text",
+          "new_name": "text"
+        },
+        "drop_column_parameters": {}
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "ac044163-27d4-46c1-b368-18c52f8607bd",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "fbd3e0b1-93a9-47d2-bea2-334416e64e5c",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.manage_columns_0.1",
+      "parameters": {
+        "operator": "Rename column",
+        "rename_column_parameters": {
+          "input_column": "label_id",
+          "new_name": "label"
+        },
+        "drop_column_parameters": {}
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "70a985ef-106e-41a2-81ba-4e0ca9c8dda2",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "2aa6c7a2-0c42-495a-b004-235bd19a3e6a",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.manage_columns_0.1",
+      "parameters": {
+        "operator": "Rename column",
+        "rename_column_parameters": {
+          "input_column": "free_text",
+          "new_name": "text"
+        },
+        "drop_column_parameters": {}
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "462c2c94-43f4-4a1d-9d34-47d489b17f89",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "7c409f9d-59ed-49d9-9d6d-6d9138bf152f",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.manage_columns_0.1",
+      "parameters": {
+        "operator": "Rename column",
+        "rename_column_parameters": {
+          "input_column": "label_id",
+          "new_name": "label"
+        },
+        "drop_column_parameters": {}
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "2aa6c7a2-0c42-495a-b004-235bd19a3e6a",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "01e87f17-db25-4868-99b6-1a8148b57734",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.concatenate_datasets_0.1",
+      "name": "hate_speech",
+      "parameters": {
+        "concatenate_type": "row_wise",
+        "apply_dedupe": false
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "8628a7fa-4dd9-45e7-a00b-48d05ed2215c",
+          "output_name": "default"
+        },
+        {
+          "name": "df",
+          "node_id": "fbd3e0b1-93a9-47d2-bea2-334416e64e5c",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "28a05584-4a16-46d2-a62d-6435fdd27c48",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.concatenate_datasets_0.1",
+      "name": "hate_speech_final",
+      "parameters": {
+        "concatenate_type": "row_wise",
+        "apply_dedupe": false
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "01e87f17-db25-4868-99b6-1a8148b57734",
+          "output_name": "default"
+        },
+        {
+          "name": "df",
+          "node_id": "7c409f9d-59ed-49d9-9d6d-6d9138bf152f",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "e8342700-4131-4b3c-9f27-4aaa5bcece95",
+      "type": "VISUALIZATION",
+      "operator": "sagemaker.visualizations.histogram_0.1",
+      "parameters": {
+        "name": "Class Count",
+        "x_axis": "label",
+        "color_by": "label"
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "28a05584-4a16-46d2-a62d-6435fdd27c48",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "9ce53173-2faf-4d87-a228-d2c3a281a125",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.handle_missing_0.1",
+      "parameters": {
+        "operator": "Impute",
+        "impute_parameters": {
+          "column_type": "Categorical",
+          "categorical_parameters": {
+            "input_column": [
+              "text"
+            ]
+          },
+          "numeric_parameters": {
+            "strategy": "Approximate Median",
+            "input_column": [
+              "text"
+            ]
+          }
+        }
+      },
+      "trained_parameters": {
+        "impute_parameters": {
+          "categorical_parameters": {
+            "_hash": 133146708735736,
+            "impute_value": "\"vcl\""
+          }
+        }
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "28a05584-4a16-46d2-a62d-6435fdd27c48",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    }
+  ]
+}
