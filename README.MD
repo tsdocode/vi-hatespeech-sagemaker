@@ -6,6 +6,8 @@
     Lê Thị Nhung        - 19133043
 
 
+#### [Đánh giá các nhóm khác](https://docs.google.com/document/d/15QhKDs0kT1ze8f6ci9jcZaPctEEvm0i9GIQ3DQcjOiY/edit)
+
 ## 1. Diagram 
 ![](./assets/pipeline.png)
 ## 2. Dịch vụ sử dụng
