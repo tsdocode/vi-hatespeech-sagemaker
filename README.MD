@@ -66,7 +66,7 @@ predictor = huggingface_model.deploy(
 )
 
 predictor.predict({
-	'inputs': "địt mẹ mày thằng chó",
+	'inputs': "ngu vcl",
     'return_all_scores' : True
 })
 ```
