@@ -100,6 +100,13 @@ streamlit run app.py
 ![](./assets/demo.gif)
 
 
+## 4. Discord Bot
+```
+python Bot/bot.py
+```
+
+![](./assets/bot.png)
+
 
 
 
