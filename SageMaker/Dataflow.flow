@@ -534,6 +534,76 @@
           "name": "default"
         }
       ]
+    },
+    {
+      "node_id": "c3c81bbb-9b8f-49d5-becc-94ed696417e6",
+      "type": "TRANSFORM",
+      "operator": "sagemaker.spark.custom_code_0.1",
+      "parameters": {
+        "operator": "Python (Pandas)",
+        "pandas_parameters": {
+          "code": "# Table is available as variable `df`\nimport pandas as pd\n\nc0, c1, c2 = df['label'].value_counts()\n\nd0 = df[df['label'] == 0]\nd1 = df[df['label'] == 1]\nd2 = df[df['label'] == 2]\n\nd1 = d1.sample(c0, replace = True)\nd2 = d2.sample(c0, replace = True)\n\ndf = pd.concat([d0, d1, d2], axis=0)\n\ndf = df.sample(frac=1)\n"
+        },
+        "pyspark_parameters": {},
+        "name": "Balance"
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "9ce53173-2faf-4d87-a228-d2c3a281a125",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "78b064e8-846d-4eca-bae5-78d79410f8ef",
+      "type": "VISUALIZATION",
+      "operator": "sagemaker.visualizations.histogram_0.1",
+      "parameters": {
+        "name": "Class Count",
+        "insights_report_parameters": {},
+        "x_axis": "label",
+        "color_by": "label"
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "c3c81bbb-9b8f-49d5-becc-94ed696417e6",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
+    },
+    {
+      "node_id": "476b6a0b-f8bc-42a6-9bf0-1b137a6c43f7",
+      "type": "VISUALIZATION",
+      "operator": "sagemaker.visualizations.histogram_0.1",
+      "parameters": {
+        "name": "Class Count",
+        "x_axis": "label",
+        "color_by": "label"
+      },
+      "inputs": [
+        {
+          "name": "df",
+          "node_id": "28a05584-4a16-46d2-a62d-6435fdd27c48",
+          "output_name": "default"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "default"
+        }
+      ]
     }
   ]
 }
