@@ -27,7 +27,7 @@ async def on_ready():
             break
     
     channel = client.get_channel(962051038548983871)
-    await channel.send('Hello World!')
+    await channel.send('Chú chó văn hoá is backkkkk :police_officer:')
 
     print(
         f'{client.user} is connected to the following guild:\n'
@@ -37,13 +37,24 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    CLASS_NAME = {
+        'LABEL_1' : 'Ofensive',
+        'LABEL_2' : 'Hate'
+    }
+
+
     if message.author == client.user:
         return
 
+    if message.content.startswith('.delete'):
+        await message.channel.purge(limit=1000)
+        return 
+
     text = message.content
-    if sentiment(text) in ['LABEL_1', 'LABEL_2']:
+    label = sentiment(text)
+    if label in ['LABEL_1', 'LABEL_2']:
         mention = message.author.mention
-        new_content = f"Negative from {mention}\nContent: {text}\nDeleted"
+        new_content = f"Negative from {mention}\nContent: {text}\nTYPE:{CLASS_NAME[label]}\nDeleted"
         await message.channel.send(new_content)
         await message.delete()
     else:

@@ -75,6 +75,13 @@ predictor.predict({
 ## 2.4 Inference
 - Start một EC2 instance
 - Thêm AWS credentials vào ~/.aws/credentials
+- Thay đổi trong file .env:
+>DISCORD_TOKEN=""
+
+>DISCORD_GUILD=""
+
+>SAGEMAKER_ENDPOINT=""
+
 - Sử dụng Boto3 để invoke Sagemaker enpoint 
 
 
@@ -91,6 +98,14 @@ def load_endpoint():
 
     return predictor
 ```
+
+
+Start Web App and Discord bot
+
+```
+./run.sh
+```
+
 
 Start web APP
 

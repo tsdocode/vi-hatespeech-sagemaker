@@ -1,5 +1,7 @@
 import streamlit as st
 import boto3
+from dotenv import load_dotenv
+import os
 
 from sagemaker.huggingface import HuggingFacePredictor
 from sagemaker.session import Session
@@ -12,10 +14,13 @@ import seaborn as sn
 import matplotlib.pyplot as plt
 
 
+
+load_dotenv()
+
 sagemaker_session = Session(boto_session=boto3.session.Session())
 
 predictor = HuggingFacePredictor(
-    endpoint_name='huggingface-pytorch-inference-2022-05-21-08-08-26-236', 
+    endpoint_name=os.getenv('SAGEMAKER_ENDPOINT'), 
     sagemaker_session=sagemaker_session
 )
 
