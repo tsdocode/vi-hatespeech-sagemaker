@@ -67,7 +67,7 @@ def main():
         fig, ax = plt.subplots(figsize=(5, 5))
 
         st.subheader("Accuracy")
-        st.write(accuracy_score(result['label'], result['pred']) + 0.2 )
+        st.write(accuracy_score(result['label'], result['pred']))
 
         st.subheader("Confusion Matrix")
 
